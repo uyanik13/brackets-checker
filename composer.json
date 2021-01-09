@@ -1,0 +1,22 @@
+{
+    "name": "uyanik13/brackets-checker",
+    "description": "bracket checker",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "BracesChecker\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+        }
+    },
+    "scripts": {
+    }
+}
