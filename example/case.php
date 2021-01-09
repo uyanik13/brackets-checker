@@ -8,8 +8,8 @@ use BracesChecker\Checker;
 
 
 
-$string = '{()[]{}}';
-//$string =  "{[]{[}((}){[(}(}}}]]{{})(}(]{(]";
+//$string = '{()[]{}}';
+$string =  "{[]{[}((}){[(}(}}}]]{{})(}(]{(]";
 $braces = new Braces();
 $checker = new Checker($braces);
 $checker->check($string);

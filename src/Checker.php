@@ -56,6 +56,11 @@ class Checker implements CheckerInterface {
 
 
   
+    /**
+     * This funtion check the string is correct
+     * @return bool $this->bracketsStack
+     * @param string $sentence
+     */
     protected function isCorrect(string $sentence)
     {
         

@@ -35,11 +35,16 @@ class Braces {
         return $this->bracket_map_flipped;
     }
 
+    /**
+     * 
+     * return $this->availableChars
+     */
     public function getAvailableChars () : array
     {
         return $this->availableChars;
     }
 
+    
     public function isInBrackets (string $element) : bool
     {
         return isset($this->brackets[$element]);
