@@ -58,23 +58,21 @@ class Checker implements CheckerInterface {
   
     protected function isCorrect(string $sentence)
     {
-         $length = mb_strlen($sentence);
-      
-         for ($i = 0; $i < $length; $i++) {
-            $current_char = $sentence[$i];
-            $bracesAdapter = new BracesAdapter($this->bracesClass, $this);
-            $bracesAdapter->MatchType($current_char, $i);
-          }
+        
+        
+         $bracesAdapter = new BracesAdapter($this->bracesClass, $this);
+         $bracesAdapter->MatchType($sentence);
 
         if($this->countOfUnClosedBrackets > 10 ){
             throw new ToManyUnClosedBracketsException("There are at least 10 unclosed brackets or pharanteses | Count : $this->countOfUnClosedBrackets "); 
-        }else if($this->countOfUnClosedBrackets <= 10){
+        }else if($this->countOfUnClosedBrackets <= 10 && $this->countOfUnClosedBrackets > 0){
             throw new InvalidSentenceException("There is/are broken pharanteses or brackets | Count : $this->countOfUnClosedBrackets "); 
         }else{
             echo 'Success. There is no error.';
         }
-     
-        return empty($$this->bracketsStack);
+
+      
+        return empty($this->bracketsStack);
      
          
     }

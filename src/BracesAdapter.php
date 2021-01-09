@@ -16,24 +16,36 @@ class BracesAdapter {
         $this->checker = $checker;
     }
 
-    public function MatchType (string $element,string $i) :bool
+    public function MatchType (string $sentence) :bool
     {
             
+          $length = mb_strlen($sentence);
+
+         for ($i = 0; $i < $length; $i++) {
+
+            $element = $sentence[$i];
+
+            if ($this->bracesClass->isInBrackets($element)) {
+
+                $this->checker->setBracketsStack($this->bracesClass->findInBrackets($element));
+
+             } else if ($this->bracesClass->isInBracketMapFlipped($element)) {
+   
+                  $this->expected = $this->popArray($this->checker->getBracketsStack());
+   
+                  if(($this->expected === NULL) || ($element != $this->expected)) {
+
+                       $this->checker->setCountOfUnClosedBrackets(); 
+
+                       $this->checker->setReplaceBrokenBrackets($i,$this->expected); 
+
+                   }
+                   
+            }
+          }
+
     
-        if ($this->bracesClass->isInBrackets($element)) {
-
-             $this->checker->setBracketsStack($this->bracesClass->findInBrackets($element));
-             
-            
-          } else if ($this->bracesClass->isInBracketMapFlipped($element)) {
-
-               $this->expected = $this->popArray($this->checker->getBracketsStack());
-
-               if(($this->expected === NULL) || ($element != $this->expected)) {
-                    $this->checker->setCountOfUnClosedBrackets(); 
-                    $this->checker->setReplaceBrokenBrackets($i,$this->expected); 
-                }
-         }
+        
 
    
    
